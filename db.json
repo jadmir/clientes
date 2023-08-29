@@ -3,6 +3,10 @@
     {
       "nombre" : "jadmir",
       "id" : 1
+    },
+    {
+      "nombre" : "otro jadmir",
+      "id" : 2
     }
   ]
 }
