@@ -1,12 +1,40 @@
 {
-  "clientes" : [
+  "clientes": [
     {
-      "nombre" : "jadmir",
-      "id" : 1
+      "nombre": "visita al doc",
+      "apellido": "asdad",
+      "email": "Zoe01@usako.net",
+      "telefono": "963-963-963",
+      "empresa": "udanc",
+      "puesto": "unadc",
+      "id": 1
     },
     {
-      "nombre" : "otro jadmir",
-      "id" : 2
+      "nombre": "visita al doc",
+      "apellido": "asdad",
+      "email": "Zoe01@usako.net",
+      "telefono": "963-963-963",
+      "empresa": "udanc",
+      "puesto": "unadc",
+      "id": 2
+    },
+    {
+      "nombre": "otros",
+      "apellido": "asdad",
+      "email": "Zoe01@usako.net",
+      "telefono": "963-963-963",
+      "empresa": "udanc",
+      "puesto": "unadc",
+      "id": 3
+    },
+    {
+      "nombre": "otros",
+      "apellido": "asdad",
+      "email": "Zoe01@usako.net",
+      "telefono": "963-963-963",
+      "empresa": "udanc",
+      "puesto": "unadc",
+      "id": 4
     }
   ]
 }
