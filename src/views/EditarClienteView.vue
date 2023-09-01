@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, reactive } from 'vue'
 import ClienteService from "../services/ClienteService";
 import { FormKit } from "@formkit/vue";
 import { useRouter, useRoute } from 'vue-router'
@@ -11,9 +11,14 @@ const route = useRoute()
 
 const { id } = route.params
 
+const formData = reactive({
+})
+
 onMounted(() => {
     ClienteService.obtenerClientes(id)
-        .then(({data}) => console.log(data))
+        .then(({data}) => {
+          Object.assign(formData, data)
+        })
         .catch(error => console.log(error))
 })
 
@@ -24,7 +29,9 @@ defineProps({
 });
 
 const handleSubmit = (data) => {
-    
+    ClienteService.actualizarCliente(id, data)
+      .then(() => router.push({name: 'listado-clientes'}))
+      .catch(error => console.log(error))
 }
 </script>
 
@@ -39,9 +46,10 @@ const handleSubmit = (data) => {
       <div class="mx-auto md:w-2/3 py-20 px-6">
         <FormKit 
           type="form"
-          submit-label="Agregar Cliente"
+          submit-label="Guardar Cambios"
           incomplete-message="No se puedo enviar, revisa los mensajes"
           @submit="handleSubmit"
+          :value="formData"
         >
           <FormKit
             type="text"
@@ -52,6 +60,7 @@ const handleSubmit = (data) => {
             :validation-messages="{
               required: 'El Nombre del cliente es Obligatorio',
             }"
+            v-model="formData.nombre"
           />
 
           <FormKit
@@ -63,6 +72,7 @@ const handleSubmit = (data) => {
             :validation-messages="{
               required: 'El Apellido del cliente es Obligatorio',
             }"
+            v-model="formData.apellido"
           />
 
           <FormKit
@@ -74,6 +84,7 @@ const handleSubmit = (data) => {
             :validation-messages="{
               required: 'El Email del cliente es Obligatorio', email: 'Coloca un email valido',
             }"
+            v-model="formData.email"
           />
 
           <FormKit
@@ -85,6 +96,7 @@ const handleSubmit = (data) => {
             :validation-messages="{
               matches: 'El formato no es valido'
             }"
+            v-model="formData.telefono"
           />
 
           <FormKit
@@ -92,6 +104,7 @@ const handleSubmit = (data) => {
             label="Empresa"
             name="empresa"
             placeholder="Empresa del cliente"
+            v-model="formData.empresa"
           />
 
           <FormKit
@@ -99,6 +112,7 @@ const handleSubmit = (data) => {
             label="Puesto"
             name="puesto"
             placeholder="Puesto del cliente"
+            v-model="formData.puesto"
           />
 
         </FormKit>
