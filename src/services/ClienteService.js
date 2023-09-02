@@ -13,5 +13,11 @@ export default {
     },
     actualizarCliente(id, data) {
         return api.patch('/clientes/' + id, data)
+    },
+    cambiarEstado(id, data) {
+        return api.patch('/clientes/' + id, data)
+    },
+    eliminarCliente(id){
+        return api.delete('/clientes/' + id)
     }
 }

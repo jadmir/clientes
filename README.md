@@ -27,3 +27,15 @@ npm run dev
 ```sh
 npm run build
 ```
+
+### instalar json server global
+
+```sh
+npm install -g json-server
+```
+
+### correr el servidor de json 
+
+```sh
+json-server --watch db.json --port 4000
+```
